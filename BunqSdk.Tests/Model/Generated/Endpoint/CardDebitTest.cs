@@ -51,8 +51,9 @@ namespace Bunq.Sdk.Tests.Model.Generated.Endpoint
                 GenerateRandomSecondLine(),
                 GetAnAllowedName(),
                 CardTypeMaestro,
-                GetAlias(),
                 ProductTypeMaestroDebit,
+                default,
+                GetAlias(),
                 allCardPinAssignments
             ).Value;
 
