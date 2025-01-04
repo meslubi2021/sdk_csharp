@@ -13,16 +13,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     /// <summary>
     /// Used to manage attachment notes.
     /// </summary>
-    public class NoteAttachmentMasterCardAction : BunqModel
+    public class NoteAttachmentOpenBankingMerchantTransaction : BunqModel
     {
         /// <summary>
         /// Endpoint constants.
         /// </summary>
-        protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/mastercard-action/{2}/note-attachment";
-        protected const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/mastercard-action/{2}/note-attachment/{3}";
-        protected const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/mastercard-action/{2}/note-attachment/{3}";
-        protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/mastercard-action/{2}/note-attachment";
-        protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/mastercard-action/{2}/note-attachment/{3}";
+        protected const string ENDPOINT_URL_CREATE = "user/{0}/monetary-account/{1}/open-banking-merchant-transaction/{2}/note-attachment";
+        protected const string ENDPOINT_URL_UPDATE = "user/{0}/monetary-account/{1}/open-banking-merchant-transaction/{2}/note-attachment/{3}";
+        protected const string ENDPOINT_URL_DELETE = "user/{0}/monetary-account/{1}/open-banking-merchant-transaction/{2}/note-attachment/{3}";
+        protected const string ENDPOINT_URL_LISTING = "user/{0}/monetary-account/{1}/open-banking-merchant-transaction/{2}/note-attachment";
+        protected const string ENDPOINT_URL_READ = "user/{0}/monetary-account/{1}/open-banking-merchant-transaction/{2}/note-attachment/{3}";
     
         /// <summary>
         /// Field constants.
@@ -73,9 +73,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        /// <param name="description">Optional description of the attachment.</param>
         /// <param name="attachmentId">The reference to the uploaded file to attach to this note.</param>
-        public static BunqResponse<int> Create(int mastercardActionId, string description, int? attachmentId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        /// <param name="description">Optional description of the attachment.</param>
+        public static BunqResponse<int> Create(int openBankingMerchantTransactionId, int? attachmentId, int? monetaryAccountId= null, string description = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -88,7 +88,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), mastercardActionId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Post(string.Format(ENDPOINT_URL_CREATE, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), openBankingMerchantTransactionId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
@@ -96,7 +96,7 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// <summary>
         /// </summary>
         /// <param name="description">Optional description of the attachment.</param>
-        public static BunqResponse<int> Update(int mastercardActionId, int noteAttachmentMasterCardActionId, int? monetaryAccountId= null, string description = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<int> Update(int openBankingMerchantTransactionId, int noteAttachmentOpenBankingMerchantTransactionId, int? monetaryAccountId= null, string description = null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
@@ -108,47 +108,46 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     };
     
             var requestBytes = Encoding.UTF8.GetBytes(BunqJsonConvert.SerializeObject(requestMap));
-            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), mastercardActionId, noteAttachmentMasterCardActionId), requestBytes, customHeaders);
+            var responseRaw = apiClient.Put(string.Format(ENDPOINT_URL_UPDATE, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), openBankingMerchantTransactionId, noteAttachmentOpenBankingMerchantTransactionId), requestBytes, customHeaders);
     
             return ProcessForId(responseRaw);
         }
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<object> Delete(int mastercardActionId, int noteAttachmentMasterCardActionId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<object> Delete(int openBankingMerchantTransactionId, int noteAttachmentOpenBankingMerchantTransactionId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), mastercardActionId, noteAttachmentMasterCardActionId), customHeaders);
+            var responseRaw = apiClient.Delete(string.Format(ENDPOINT_URL_DELETE, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), openBankingMerchantTransactionId, noteAttachmentOpenBankingMerchantTransactionId), customHeaders);
     
             return new BunqResponse<object>(null, responseRaw.Headers);
         }
     
         /// <summary>
-        /// Manage the notes for a given user.
         /// </summary>
-        public static BunqResponse<List<NoteAttachmentMasterCardAction>> List(int mastercardActionId, int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<List<NoteAttachmentOpenBankingMerchantTransaction>> List(int openBankingMerchantTransactionId, int? monetaryAccountId= null, IDictionary<string, string> urlParams = null, IDictionary<string, string> customHeaders = null)
         {
             if (urlParams == null) urlParams = new Dictionary<string, string>();
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), mastercardActionId), urlParams, customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_LISTING, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), openBankingMerchantTransactionId), urlParams, customHeaders);
     
-            return FromJsonList<NoteAttachmentMasterCardAction>(responseRaw, OBJECT_TYPE_GET);
+            return FromJsonList<NoteAttachmentOpenBankingMerchantTransaction>(responseRaw, OBJECT_TYPE_GET);
         }
     
         /// <summary>
         /// </summary>
-        public static BunqResponse<NoteAttachmentMasterCardAction> Get(int mastercardActionId, int noteAttachmentMasterCardActionId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
+        public static BunqResponse<NoteAttachmentOpenBankingMerchantTransaction> Get(int openBankingMerchantTransactionId, int noteAttachmentOpenBankingMerchantTransactionId, int? monetaryAccountId= null, IDictionary<string, string> customHeaders = null)
         {
             if (customHeaders == null) customHeaders = new Dictionary<string, string>();
     
             var apiClient = new ApiClient(GetApiContext());
-            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), mastercardActionId, noteAttachmentMasterCardActionId), new Dictionary<string, string>(), customHeaders);
+            var responseRaw = apiClient.Get(string.Format(ENDPOINT_URL_READ, DetermineUserId(), DetermineMonetaryAccountId(monetaryAccountId), openBankingMerchantTransactionId, noteAttachmentOpenBankingMerchantTransactionId), new Dictionary<string, string>(), customHeaders);
     
-            return FromJson<NoteAttachmentMasterCardAction>(responseRaw, OBJECT_TYPE_GET);
+            return FromJson<NoteAttachmentOpenBankingMerchantTransaction>(responseRaw, OBJECT_TYPE_GET);
         }
     
     
@@ -191,9 +190,9 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
     
         /// <summary>
         /// </summary>
-        public static NoteAttachmentMasterCardAction CreateFromJsonString(string json)
+        public static NoteAttachmentOpenBankingMerchantTransaction CreateFromJsonString(string json)
         {
-            return BunqModel.CreateFromJsonString<NoteAttachmentMasterCardAction>(json);
+            return BunqModel.CreateFromJsonString<NoteAttachmentOpenBankingMerchantTransaction>(json);
         }
     }
 }

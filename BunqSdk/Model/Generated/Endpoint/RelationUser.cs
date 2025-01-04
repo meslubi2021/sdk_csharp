@@ -50,6 +50,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "counter_user_status")]
         public string CounterUserStatus { get; set; }
+        /// <summary>
+        /// Tap to Pay settings for the company employee.
+        /// </summary>
+        [JsonProperty(PropertyName = "company_employee_setting_adyen_card_transaction")]
+        public CompanyEmployeeSettingAdyenCardTransaction CompanyEmployeeSettingAdyenCardTransaction { get; set; }
+        /// <summary>
+        /// Cards accessible by the company employee
+        /// </summary>
+        [JsonProperty(PropertyName = "all_company_employee_card")]
+        public List<CompanyEmployeeCard> AllCompanyEmployeeCard { get; set; }
     
     
         /// <summary>
@@ -92,6 +102,16 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.CounterUserStatus != null)
+            {
+                return false;
+            }
+    
+            if (this.CompanyEmployeeSettingAdyenCardTransaction != null)
+            {
+                return false;
+            }
+    
+            if (this.AllCompanyEmployeeCard != null)
             {
                 return false;
             }

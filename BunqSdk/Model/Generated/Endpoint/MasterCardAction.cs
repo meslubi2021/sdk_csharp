@@ -201,6 +201,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "request_reference_split_the_bill")]
         public List<RequestInquiryReference> RequestReferenceSplitTheBill { get; set; }
         /// <summary>
+        /// The cardTokenization event awaiting acceptance by the user
+        /// </summary>
+        [JsonProperty(PropertyName = "card_tokenization_event")]
+        public Event CardTokenizationEvent { get; set; }
+        /// <summary>
         /// A reference to the Refunds if they exist.
         /// </summary>
         [JsonProperty(PropertyName = "all_mastercard_action_refund")]
@@ -226,15 +231,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "cashback_payout_item")]
         public CashbackPayoutItem CashbackPayoutItem { get; set; }
         /// <summary>
-        /// The report for this transaction
+        /// The point mutation for this action or null
         /// </summary>
-        [JsonProperty(PropertyName = "mastercard_action_report")]
-        public MasterCardActionReport MastercardActionReport { get; set; }
+        [JsonProperty(PropertyName = "point_mutation")]
+        public PointMutation PointMutation { get; set; }
         /// <summary>
-        /// The blacklist enabled for the merchant of this transaction
+        /// DEPRECATED. The blacklist enabled for the merchant of this transaction
         /// </summary>
         [JsonProperty(PropertyName = "blacklist")]
-        public UserBlacklistMasterCardMerchant Blacklist { get; set; }
+        public UserBlocklistMasterCardMerchant Blacklist { get; set; }
+        /// <summary>
+        /// The blocklist enabled for the merchant of this transaction
+        /// </summary>
+        [JsonProperty(PropertyName = "blocklist")]
+        public UserBlocklistMasterCardMerchant Blocklist { get; set; }
         /// <summary>
         /// The status of the additional authentication performed (3ds) by the user for this transaction.
         /// </summary>
@@ -246,10 +256,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "pin_status")]
         public string PinStatus { get; set; }
         /// <summary>
+        /// The report for this transaction
+        /// </summary>
+        [JsonProperty(PropertyName = "mastercard_action_report")]
+        public MasterCardActionReport MastercardActionReport { get; set; }
+        /// <summary>
         /// The MCC provided.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_category_code")]
         public string MerchantCategoryCode { get; set; }
+        /// <summary>
+        /// The receipt the company employee has to provide for this transaction.
+        /// </summary>
+        [JsonProperty(PropertyName = "company_employee_card_receipt")]
+        public CompanyEmployeeCardReceipt CompanyEmployeeCardReceipt { get; set; }
     
         /// <summary>
         /// </summary>
@@ -451,6 +471,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
+            if (this.CardTokenizationEvent != null)
+            {
+                return false;
+            }
+    
             if (this.AllMastercardActionRefund != null)
             {
                 return false;
@@ -476,12 +501,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
-            if (this.MastercardActionReport != null)
+            if (this.PointMutation != null)
             {
                 return false;
             }
     
             if (this.Blacklist != null)
+            {
+                return false;
+            }
+    
+            if (this.Blocklist != null)
             {
                 return false;
             }
@@ -496,7 +526,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
+            if (this.MastercardActionReport != null)
+            {
+                return false;
+            }
+    
             if (this.MerchantCategoryCode != null)
+            {
+                return false;
+            }
+    
+            if (this.CompanyEmployeeCardReceipt != null)
             {
                 return false;
             }

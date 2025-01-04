@@ -109,6 +109,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "sub_type")]
         public string SubType { get; set; }
         /// <summary>
+        /// Information about the expected arrival of the payment.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_arrival_expected")]
+        public PaymentArrivalExpected PaymentArrivalExpected { get; set; }
+        /// <summary>
         /// The status of the bunq.to payment.
         /// </summary>
         [JsonProperty(PropertyName = "bunqto_status")]
@@ -173,6 +178,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "payment_auto_allocate_instance")]
         public PaymentAutoAllocateInstance PaymentAutoAllocateInstance { get; set; }
+        /// <summary>
+        /// A reference to the PaymentSuspendedOutgoing if it exists.
+        /// </summary>
+        [JsonProperty(PropertyName = "payment_suspended_outgoing")]
+        public PaymentSuspendedOutgoing PaymentSuspendedOutgoing { get; set; }
     
         /// <summary>
         /// Create a new Payment.
@@ -287,6 +297,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
+            if (this.PaymentArrivalExpected != null)
+            {
+                return false;
+            }
+    
             if (this.BunqtoStatus != null)
             {
                 return false;
@@ -358,6 +373,11 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
             }
     
             if (this.PaymentAutoAllocateInstance != null)
+            {
+                return false;
+            }
+    
+            if (this.PaymentSuspendedOutgoing != null)
             {
                 return false;
             }

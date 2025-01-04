@@ -57,10 +57,20 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
         [JsonProperty(PropertyName = "daily_limit")]
         public Amount DailyLimit { get; set; }
         /// <summary>
+        /// The maximum Amount the MonetaryAccountCard can be 'in the red'.
+        /// </summary>
+        [JsonProperty(PropertyName = "overdraft_limit")]
+        public Amount OverdraftLimit { get; set; }
+        /// <summary>
         /// The current available balance Amount of the MonetaryAccountCard.
         /// </summary>
         [JsonProperty(PropertyName = "balance")]
         public Amount Balance { get; set; }
+        /// <summary>
+        /// The current real balance Amount of the MonetaryAccountCard.
+        /// </summary>
+        [JsonProperty(PropertyName = "balance_real")]
+        public Amount BalanceReal { get; set; }
         /// <summary>
         /// The Aliases for the MonetaryAccountCard.
         /// </summary>
@@ -168,7 +178,17 @@ namespace Bunq.Sdk.Model.Generated.Endpoint
                 return false;
             }
     
+            if (this.OverdraftLimit != null)
+            {
+                return false;
+            }
+    
             if (this.Balance != null)
+            {
+                return false;
+            }
+    
+            if (this.BalanceReal != null)
             {
                 return false;
             }
